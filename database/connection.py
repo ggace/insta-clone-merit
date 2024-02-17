@@ -17,15 +17,15 @@ def __readConfig():
 
         return config
 
-con = None
+__con = None
 
 def __connect():
     
-    global con;
+    global __con;
     # STEP 2: MySQL Connection 연결
 
     config = __readConfig()
-    con = pymysql.connect(host=config['application'][0]['db'][0]['host'], 
+    __con = pymysql.connect(host=config['application'][0]['db'][0]['host'], 
                         port=config['application'][0]['db'][0]['port'], 
                         user=config['application'][0]['db'][0]['id'], 
                         password=config['application'][0]['db'][0]['pw'],
@@ -35,9 +35,9 @@ def __connect():
                       cursorclass=pymysql.cursors.DictCursor)
 
 def __execute(sql):
-    global con
+    global __con
     # STEP 3: Connection 으로부터 Cursor 생성
-    cur = con.cursor()
+    cur = __con.cursor()
     
     # STEP 4: SQL문 실행 및 Fetch
     
@@ -48,6 +48,6 @@ def __execute(sql):
     return rows     # 전체 rows
 
 def __closeDB():
-    global con
+    global __con
     # STEP 5: DB 연결 종료
-    con.close()
+    __con.close()
