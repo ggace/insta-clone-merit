@@ -33,13 +33,13 @@ def users(action):
         return "Fail: parameter whose name is 'options' is not existed."
     
     options = json.loads(request.args.get("options"))
-    if(request.method == "GET"): #조회
+    if(request.method == "GET"): #로그인
         return UserController.get_users(action, options)
-    elif(request.method == "POST"): #추가
+    elif(request.method == "POST"): #회원가입
         return UserController.post_users(action, options)
-    elif(request.method == "PUT"): #수정
+    elif(request.method == "PUT"): #회원정보 수정
         return UserController.put_users(action, options)
-    elif(request.method == "DELETE"): #삭제
+    elif(request.method == "DELETE"): #회원 삭제
         return UserController.delete_users(action, options)
     else:
         return "Fail: this method is not available to access"
