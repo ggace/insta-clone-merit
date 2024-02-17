@@ -1,2 +1,2 @@
 Success = "Success"
-DB_Fail = "DB Fail"
+DB_Fail = "Fail: DB Fail"

@@ -10,11 +10,14 @@ app = Flask(__name__)     # 플라스크 객체를 생성한다. __name__은 현
 def index():              # 위의 주소를 호출 시 보여 줄 것을 함수로 작성해 준다. 중복되지 않도록만 적어주면된다.
     return "this is main page"
 
-@app.route("/feeds", methods=["GET", "POST", "PUT", "DELETE"])
-def feeds():
+@app.route("/feeds/<action>", methods=["GET", "POST", "PUT", "DELETE"])
+def feeds(action):
+    if not ("options" in request.args):
+        return "Fail: parameter whose name is 'options' is not existed."
+    
     options = json.loads(request.args.get("options"))
     if(request.method == "GET"):
-        return FeedController.feeds(options)
+        return FeedController.feeds(action, options)
     else:
         return "hello"
 
