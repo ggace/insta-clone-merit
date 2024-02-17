@@ -1,3 +1,10 @@
 config.yml
 
 database/sqls.py
+
+*.pyc
+*.cpython
+
+__pycache__/
+controller/__pycache__/
+database/__pyache__/
