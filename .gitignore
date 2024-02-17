@@ -6,5 +6,5 @@ database/sqls.py
 *.cpython
 
 __pycache__/
-controller/__pycache__/
-database/__pyache__/
+*/__pycache__/
+
