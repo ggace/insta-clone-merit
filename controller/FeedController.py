@@ -1,6 +1,7 @@
 from service import FeedService
 
-def feeds(action, options):
+#조회
+def get_feeds(action, options):
     option_list = {
         'action': ["search_feeds_count_by_similar_tag", "profile", "search_feeds_by_tag"]
     }
@@ -13,3 +14,15 @@ def feeds(action, options):
             return FeedService.search_feeds_by_tag(options["data"]).to_string()
     else:
         return "Fail: It is not enough data when you approach"
+    
+#추가
+def post_feeds(action, options):
+    return "post_feeds"
+
+#수정
+def put_feeds(action, options):
+    return "put_feeds"
+
+#삭제
+def delete_feeds(action, options):
+    return "delete_feeds"

@@ -17,9 +17,15 @@ def feeds(action):
     
     options = json.loads(request.args.get("options"))
     if(request.method == "GET"):
-        return FeedController.feeds(action, options)
+        return FeedController.get_feeds(action, options)
+    elif(request.method == "POST"):
+        return FeedController.post_feeds(action, options)
+    elif(request.method == "PUT"):
+        return FeedController.put_feeds(action, options)
+    elif(request.method == "DELETE"):
+        return FeedController.delete_feeds(action, options)
     else:
-        return "hello"
+        return "Fail: this method is not available to access"
 
 if __name__ == '__main__':# 다른데서 부르면 실행하지 마라는 뜻이다.
     app.run(debug=True)
