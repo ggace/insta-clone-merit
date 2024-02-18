@@ -15,3 +15,8 @@ def get_search_feeds_by_tag(tag):
     sql = sqls.get_sql_about_search_feeds_by_tag(tag)
     
     return database.sqlRun(sql)
+
+def get_view_all_profile_feeds(user_id):
+    sql = sqls.get_sql_about_get_view_all_profile_feeds(user_id)
+
+    return database.sqlRun(sql)

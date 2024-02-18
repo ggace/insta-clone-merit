@@ -3,7 +3,7 @@ from service import FeedService
 #조회
 def get_feeds(action, options):
     option_list = {
-        'action': ["search_feeds_count_by_similar_tag", "profile", "search_feeds_by_tag"]
+        'action': ["search_feeds_count_by_similar_tag", "profile", "search_feeds_by_tag", "view_all_profile_feeds"]
     }
     if("data" in options):
         if(action == option_list["action"][0]):
@@ -12,6 +12,8 @@ def get_feeds(action, options):
             return FeedService.get_profile(options["data"]).to_string()
         elif(action == option_list["action"][2]):
             return FeedService.get_search_feeds_by_tag(options["data"]).to_string()
+        elif(action == option_list["action"][3]):
+            return FeedService.get_view_all_profile_feeds(options["data"]).to_string()
         else:
             return "Fail: It is not existed action that you write"
     else:
